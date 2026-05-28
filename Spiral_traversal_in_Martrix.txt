@@ -1,0 +1,70 @@
+#include <stdio.h>
+
+int main()
+{
+    int r, c;
+    
+    printf("Enter rows and columns: ");
+    scanf("%d %d", &r, &c);
+
+    int arr[r][c];
+    int arr2[100];
+
+    printf("Enter elements:\n");
+
+    for(int i = 0; i < r; i++)
+    {
+        for(int j = 0; j < c; j++)
+        {
+            scanf("%d", &arr[i][j]);
+        }
+    }
+
+    int sr = 0, sc = 0;
+    int er = r - 1, ec = c - 1;
+
+    int k = 0;
+
+    // Top Boundary
+    for(int j = sc; j <= ec; j++)
+    {
+        arr2[k++] = arr[sr][j];
+    }
+    sr++;
+
+    // Right Boundary
+    for(int i = sr; i <= er; i++)
+    {
+        arr2[k++] = arr[i][ec];
+    }
+    ec--;
+
+    // Bottom Boundary
+    if(sr <= er)
+    {
+        for(int j = ec; j >= sc; j--)
+        {
+            arr2[k++] = arr[er][j];
+        }
+        er--;
+    }
+
+    // Left Boundary
+    if(sc <= ec)
+    {
+        for(int i = er; i >= sr; i--)
+        {
+            arr2[k++] = arr[i][sc];
+        }
+        sc++;
+    }
+
+    printf("Boundary elements are:\n");
+
+    for(int i = 0; i < k; i++)
+    {
+        printf("%d ", arr2[i]);
+    }
+
+    return 0;
+}

@@ -1,0 +1,56 @@
+// WAP to do negation of even rows and then swap the columns of the 2D Array and finaly return the resultant 2D array.
+#include <stdio.h>
+
+int main() 
+{
+    int r,c;
+    printf("Enter the r and c:");
+    scanf("%d %d", &r,&c);
+    int arr[r][c];
+    printf("Enter elements:");
+    for(int i=0;i<r;i++)
+    {
+        for(int j=0;j<c;j++)
+        {
+            scanf("%d",&arr[i][j]);
+        }
+    }
+    
+    for(int i=0;i<r;i++)
+    {
+        for(int j=0;j<c;j++)
+        {
+            if((i+ 1) % 2 == 0)
+            {
+                arr[i][j] = arr[i][j] * -1;
+            }
+        }
+    }
+    
+    
+    // Swapping of columns.
+    int top = 0,bottom = r-1;
+    while(top < bottom)
+    {
+        for(int j=0;j<c;j++)
+        {
+            int temp = arr[top][j];
+            arr[top][j] = arr[bottom][j];
+            arr[bottom][j] = temp;
+        }
+        top ++;
+        bottom--;
+    }
+    for(int i=0;i<r;i++)
+    {
+        for(int j=0;j<c;j++)
+        {
+            printf("%d",arr[i][j]);
+        }
+        printf("\n");
+    }
+    
+    
+    
+    return 0;
+}

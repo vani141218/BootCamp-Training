@@ -1,0 +1,33 @@
+// Nummber greater than threshold.
+#include <stdio.h>
+
+int main() {
+    int n,flag =0;
+    printf("Enter n value:");
+    scanf("%d",&n);
+    int arr[n];
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    int hash[n];
+    for(int i=0;i<n;i++)
+    {
+        hash[arr[i]]++;
+    }
+    int thr = n/4;
+    for(int i=0;i<n;i++)
+    {
+        if(hash[i] > thr)
+        {
+            printf("\n%d",i );
+            flag =1;
+            break;
+            
+        }
+    }
+    if(flag == 0)
+    {
+        printf("\n No number is greater than n/4");
+    }
+}
